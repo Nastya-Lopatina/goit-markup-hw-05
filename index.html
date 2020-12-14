@@ -55,11 +55,22 @@
         <div class="container ">
             
          <h1 class="maim-title">Эффективные решения для вашего бизнеса</h1>
-         <button class="big-button" type="button">Заказать услугу</button>
+         <button data-open-modal class="big-button" type="button">Заказать услугу</button>
             
         </div>
         
     </section>
+    <!--Модальное окно с фоном-->
+    <div class="modal-bgr is-hidden" data-backdrop>
+        <div class="modal-window">
+            <button data-close-modal class="btn-close" >
+                <svg  class="icon-close"  width=18px height=18px>
+                    <use href="./images/icon/sprinte.svg#icon-close-black"></use>
+                </svg>
+            </button>
+            
+        </div>
+    </div>
       
     <!--Почему именно мы-->
      <section class="section-title" >
@@ -111,15 +122,28 @@
                 <h2 class="title">Чем мы занимаемся</h2>
             
                 <ul class="big-img">
-                    <li><img src="./images/img (1).jpg" alt="" width="370px"></li>
-                    <li><img src="./images/box2.jpg"  alt="" width="370px"> </li>
-                    <li><img src="./images/box3.jpg" alt="" width="370px"></li>
+                    <li class="unites">
+                        
+                       <img src="./images/img (1).jpg" alt="" width="370px">
+                       <p class="title-big-img">Десктопные приложения</p>
+
+                    </li>
+                    <li class="unites">
+                        
+                            <img src="./images/box2.jpg"  alt="" width="370px"> 
+                            <p class="title-big-img ">Мобильные приложения</p>
+                    </li>
+                    <li class="unites">
+                       
+                            <img src="./images/box3.jpg" alt="" width="370px">
+                            <p class="title-big-img " >Дизайнерские решения</p>
+                    </li>
+
                 </ul>
-           </div>
-     </section>
-    
-   
-     <!--Наша команда-->
+            </div>
+        </section>
+                        
+  <!--Наша команда-->
       <section class="section-command">
             <div class="container">
                  <h2 class="title" >Наша команда</h2>
@@ -333,11 +357,11 @@
              </ul>
           </div> 
       </section>
-</main>
-  
-<footer class="footer">
+    </main>
     
-<div class="container footer-content"> 
+    <footer class="footer">
+        
+        <div class="container footer-content"> 
             <div class="content-link">
                 <a href="./index.html">
                     <span class="web">Web</span><span class="logo">Studio</span> 
@@ -350,49 +374,71 @@
                     </ul>
                 </address>
             </div>
-
-             <div>
-                  <h3 class="invoke">Присоединяйтесь</h3>
-
-                    <ul class="social-footer">
-
-                        <li class="social-list-footer">
-                            <a href="" class="social-link-footer">
-                                   <svg width="20px" height="20px"  class="social-icon-footer"> 
-                                       <use href="./images/icon/sprinte.svg#icon-instagram-2"></use>
-                                   </svg> 
-                            </a>
-                        </li>
-
-                        <li class="social-list-footer">
-                            <a href="" class="social-link-footer">
-                                <svg width="20px" height="20px"  class="social-icon-footer"> 
-                                    <use href="./images/icon/sprinte.svg#icon-twitter-1"></use>
-                                </svg> 
-                            </a>
-                      </li>
-
-                        <li class="social-list-footer">
+            
+            <div>
+                <h3 class="invoke">Присоединяйтесь</h3>
+                
+                <ul class="social-footer">
+                    
+                    <li class="social-list-footer">
+                        <a href="" class="social-link-footer">
+                            <svg width="20px" height="20px"  class="social-icon-footer"> 
+                                <use href="./images/icon/sprinte.svg#icon-instagram-2"></use>
+                            </svg> 
+                        </a>
+                    </li>
+                    
+                    <li class="social-list-footer">
+                        <a href="" class="social-link-footer">
+                            <svg width="20px" height="20px"  class="social-icon-footer"> 
+                                <use href="./images/icon/sprinte.svg#icon-twitter-1"></use>
+                            </svg> 
+                        </a>
+                    </li>
+                    
+                    <li class="social-list-footer">
                         <a href="" class="social-link-footer">
                             <svg width="20px" height="20px"  class="social-icon-footer"> 
                                 <use href="./images/icon/sprinte.svg#icon-facebook-1"></use>
                             </svg> 
                         </a>
-                        </li>
-
-                        <li class="social-list-footer">
-                            <a href="" class="social-link-footer">
-                                <svg width="20px" height="20px" class="social-icon-footer"> 
-                                    <use href="./images/icon/sprinte.svg#icon-linkedin-1"></use>
-                                </svg> 
-                            </a>
-                        </li>
-
-                    </ul>
+                    </li>
+                    
+                    <li class="social-list-footer">
+                        <a href="" class="social-link-footer">
+                            <svg width="20px" height="20px" class="social-icon-footer"> 
+                                <use href="./images/icon/sprinte.svg#icon-linkedin-1"></use>
+                            </svg> 
+                        </a>
+                    </li>
+                    
+                </ul>
             </div>
         </div>
+        
+    </footer>
+
     
-</footer>
+
+    <script>
+        const refs = {
+          openModalBtn: document.querySelector("[data-open-modal]"),
+          closeModalBtn: document.querySelector("[data-close-modal]"),
+          backdrop: document.querySelector("[data-backdrop]"),
+        };
   
+        refs.openModalBtn.addEventListener("click", toggleModal);
+        refs.closeModalBtn.addEventListener("click", toggleModal);
+  
+        refs.backdrop.addEventListener("click", logBackdropClick);
+  
+        function toggleModal() {
+          refs.backdrop.classList.toggle("is-hidden");
+        }
+  
+        function logBackdropClick() {
+          console.log("Это клик в бекдроп");
+        }
+      </script>
 </body>
 </html>
